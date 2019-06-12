@@ -1,0 +1,39 @@
+# protobuf generated files
+*.pb.cc
+*.pb.h
+src/base/pb/google
+
+# CMake generated files
+cmake_install.cmake
+CMakeCache.txt
+CMakeFiles/
+src/base/Makefile
+src/db_proxy_server/Makefile
+src/file_server/Makefile
+src/http_msg_server/Makefile
+src/login_server/Makefile
+src/msfs/Makefile
+src/msg_server/Makefile
+src/push_server/Makefile
+src/route_server/Makefile
+src/slog/Makefile
+
+# binaries
+*.so
+*.a
+*.lib
+*.dylib
+*.dll
+*.tar.gz
+src/msfs/msfs
+src/tools/daeml
+src/msfs/msfs
+src/db_proxy_server/db_proxy_server
+src/file_server/file_server
+src/http_msg_server/http_msg_server
+src/login_server/login_server
+src/msg_server/msg_server
+src/push_server/push_server
+src/route_server/route_server
+run/*/
+run/daeml
