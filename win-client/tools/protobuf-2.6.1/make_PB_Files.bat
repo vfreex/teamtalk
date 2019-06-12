@@ -6,19 +6,19 @@ COLOR 1f
 ECHO.
 ECHO.
 ECHO   ##############################################################
-ECHO   #               欢迎使用 TeamTalk 工程配置向导               #
+ECHO   #               娆㈣繋浣跨敤 TeamTalk 宸ョ▼閰嶇疆鍚戝               #
 ECHO   #                   version 1.0                              #
 ECHO   ##############################################################
 ECHO.
 ECHO.
 
-rem 拷贝PB协议文件
+rem 鎷疯礉PB鍗忚鏂囦欢
 echo make IM protocol buffer files...
 cd %~dp0
 mkdir %~dp0\..\..\include\ProtocolBuffer
 copy  %~dp0\..\..\..\pb\*.proto %~dp0\*.proto
 echo Copy IM protocol buffer files finished
-rem 生成PB协议的C++版本
+rem 鐢熸垚PB鍗忚鐨凜++鐗堟湰
 protoc.exe --cpp_out=%~dp0\..\..\include\ProtocolBuffer *.proto
 echo make the pb files of c++ version has finished.
 pause

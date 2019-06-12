@@ -1,0 +1,5 @@
+Following files are removed by Yuxiang Zhu <vfreex@gmail.com>
+./tools/depends/mfc120u.dll
+./tools/depends/msvcr120.dll
+./tools/depends/gdiplus.dll
+./tools/depends/msvcp120.dll
