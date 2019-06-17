@@ -30,9 +30,9 @@
  * SUCH DAMAGE.
  */
 
+#include "stdafx.h"
 #include <wtypes.h>
 #include "stdlib.h"
-#include "StdAfx.h"
 #include "md5.h"
 
 

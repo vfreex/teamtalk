@@ -16,18 +16,19 @@
     <SccProjectName />
     <SccLocalPath />
     <Keyword>AtlProj</Keyword>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <UseOfAtl>Dynamic</UseOfAtl>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <UseOfMfc>Dynamic</UseOfMfc>
     <UseOfAtl>Dynamic</UseOfAtl>
     <CharacterSet>Unicode</CharacterSet>
@@ -49,13 +50,11 @@
     <OutDir>$(SolutionDir)\..\bin\teamtalk\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\..\obj\$(Configuration)\$(ProjectName)_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\..\bin\teamtalk\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\..\obj\$(Configuration)\$(ProjectName)_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -91,9 +90,7 @@
       <HeaderFileName>GifSmiley.h</HeaderFileName>
       <InterfaceIdentifierFileName>GifSmiley_i.c</InterfaceIdentifierFileName>
     </Midl>
-    <PostBuildEvent>
-      <Command>Regsvr32.exe /s "$(SolutionDir)\..\bin\teamtalk\$(Configuration)\GifSmiley.dll"</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
@@ -140,9 +137,7 @@
       <HeaderFileName>GifSmiley.h</HeaderFileName>
       <InterfaceIdentifierFileName>GifSmiley_i.c</InterfaceIdentifierFileName>
     </Midl>
-    <PostBuildEvent>
-      <Command>Regsvr32.exe /s "$(SolutionDir)\..\bin\teamtalk\$(Configuration)\GifSmiley.dll"</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>

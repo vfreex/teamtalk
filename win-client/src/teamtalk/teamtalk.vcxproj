@@ -14,19 +14,20 @@
     <ProjectGuid>{227620A9-98FE-4160-B08B-074B2FFC2784}</ProjectGuid>
     <RootNamespace>teamtalk</RootNamespace>
     <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
@@ -63,7 +64,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>utility.lib;network.lib;DuiLib.lib;Modules.lib;GifSmiley.lib;libprotobuf-lite.lib;httpclient.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\..\lib\$(Configuration);$(SolutionDir)\..\3rdParty\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Midl>
@@ -97,7 +99,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>utility.lib;network.lib;DuiLib.lib;Modules.lib;httpclient.lib;libprotobuf-lite.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\..\lib\$(Configuration);$(SolutionDir)\..\3rdParty\lib\$(Configuration)</AdditionalLibraryDirectories>
     </Link>
     <Midl>
@@ -165,6 +168,26 @@
     <Xml Include="..\..\bin\teamtalk\gui\SessionDialog\SessionDialog.xml" />
     <Xml Include="..\..\bin\teamtalk\gui\SysConfigDialog\ServerConfigDialog.xml" />
     <Xml Include="..\..\bin\teamtalk\gui\SysConfigDialog\SysConfigDialog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\3rdParty\src\protobuf-2.6.1\vsprojects\libprotobuf-lite.vcxproj">
+      <Project>{49ea010d-706f-4be2-a397-77854b72a040}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\DuiLib\DuiLib.vcxproj">
+      <Project>{e106acd7-4e53-4aee-942b-d0dd426db34e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\network\network.vcxproj">
+      <Project>{322b08fc-4620-4e34-9834-85a2e3a3a223}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\utility\utility.vcxproj">
+      <Project>{a29131fe-41a5-4cd5-b6a7-a66a173f912b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GifSmiley\GifSmiley2003.vcxproj">
+      <Project>{5877050b-504e-4dff-a78c-759c95e0dd06}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.vcxproj">
+      <Project>{6e182bbc-17d4-4e11-8580-44a546d6acf0}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

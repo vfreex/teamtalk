@@ -39,6 +39,7 @@ template<> struct hash<std::string> {
 };
 }
 #else
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
 #include <hash_map>
 using namespace stdext;
 #endif

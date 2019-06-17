@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="protobuf-objs">
+      <UniqueIdentifier>{8ad48721-4db6-4722-bb8a-2e759a9e14ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cxImage">
+      <UniqueIdentifier>{e7a73412-f53e-4035-bd29-3f663ac9b696}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cxImage\cxImage">
+      <UniqueIdentifier>{0459e240-d2d0-4f86-801b-2a7611b0a57f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cxImage\jpeg">
+      <UniqueIdentifier>{b9c920be-7977-4144-8179-bfd2e4bee0bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cxImage\png">
+      <UniqueIdentifier>{78af9087-2a65-4f52-8f58-474ab49a9276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cxImage\zlib">
+      <UniqueIdentifier>{1d9be9e7-07e0-4205-9805-318b42c5631f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.BaseDefine.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.Buddy.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.File.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.Group.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.Login.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.Message.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.Other.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.Server.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ProtocolBuffer\IM.SwitchService.pb.cc">
+      <Filter>protobuf-objs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximabmp.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximaenc.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximaexif.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximage.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximagif.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximainfo.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximajpg.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximalpha.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximalyr.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximapal.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximapng.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximatran.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximawbmp.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\ximawnd.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\cxImage\xmemfile.cpp">
+      <Filter>cxImage\cxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcapimin.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcapistd.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jccoefct.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jccolor.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcdctmgr.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jchuff.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcinit.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcmainct.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcmarker.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcmaster.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcomapi.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcparam.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcphuff.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcprepct.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jcsample.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jctrans.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdapimin.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdapistd.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdatadst.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdatasrc.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdcoefct.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdcolor.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jddctmgr.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdhuff.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdinput.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdmainct.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdmarker.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdmaster.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdmerge.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdphuff.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdpostct.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdsample.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jdtrans.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jerror.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jfdctflt.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jfdctfst.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jfdctint.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jidctflt.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jidctfst.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jidctint.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jidctred.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jmemmgr.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jmemnobs.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jquant1.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jquant2.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\jpeg\jutils.c">
+      <Filter>cxImage\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\png.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngerror.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pnggccrd.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngget.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngmem.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngpread.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngread.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngrio.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngrtran.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngrutil.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngset.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngtrans.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngvcrd.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngwio.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngwrite.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngwtran.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\png\pngwutil.c">
+      <Filter>cxImage\png</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\adler32.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\compress.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\crc32.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\deflate.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\gzio.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\infback.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\inffast.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\inflate.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\inftrees.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\trees.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\uncompr.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\src\cxImage\zlib\zutil.c">
+      <Filter>cxImage\zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.BaseDefine.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.Buddy.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.File.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.Group.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.Login.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.Message.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.Other.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.Server.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ProtocolBuffer\IM.SwitchService.pb.h">
+      <Filter>protobuf-objs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\xfile.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximabmp.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximacfg.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximadef.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximage.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximagif.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximaiter.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximajpg.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximapng.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximath.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\ximawbmp.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\xiofile.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\cxImage\xmemfile.h">
+      <Filter>cxImage\cxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jchuff.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jconfig.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jdct.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jdhuff.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jerror.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jinclude.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jmemsys.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jmorecfg.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jpegint.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jpeglib.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\jpeg\jversion.h">
+      <Filter>cxImage\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\png\png.h">
+      <Filter>cxImage\png</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\png\pngconf.h">
+      <Filter>cxImage\png</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\crc32.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\deflate.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\inffast.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\inffixed.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\inflate.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\inftrees.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\trees.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\zconf.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\zconf.in.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\zlib.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\src\cxImage\zlib\zutil.h">
+      <Filter>cxImage\zlib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\3rdParty\src\cxImage\jpeg\Jpeg.dsp">
+      <Filter>cxImage\jpeg</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\ANNOUNCE">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\CHANGES">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\INSTALL">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\KNOWNBUG">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\LICENSE">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\png.dsp">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\README">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\TODO">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\png\Y2KINFO">
+      <Filter>cxImage\png</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\zlib\ChangeLog">
+      <Filter>cxImage\zlib</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\zlib\FAQ">
+      <Filter>cxImage\zlib</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\zlib\README">
+      <Filter>cxImage\zlib</Filter>
+    </None>
+    <None Include="..\..\3rdParty\src\cxImage\zlib\zlib.dsp">
+      <Filter>cxImage\zlib</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\3rdParty\src\cxImage\jpeg\change.log">
+      <Filter>cxImage\jpeg</Filter>
+    </Text>
+    <Text Include="..\..\3rdParty\src\cxImage\jpeg\filelist.txt">
+      <Filter>cxImage\jpeg</Filter>
+    </Text>
+    <Text Include="..\..\3rdParty\src\cxImage\jpeg\Readme.txt">
+      <Filter>cxImage\jpeg</Filter>
+    </Text>
+    <Text Include="..\..\3rdParty\src\cxImage\png\libpng-1.2.24.txt">
+      <Filter>cxImage\png</Filter>
+    </Text>
+    <Text Include="..\..\3rdParty\src\cxImage\zlib\algorithm.txt">
+      <Filter>cxImage\zlib</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
