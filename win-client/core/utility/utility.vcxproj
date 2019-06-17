@@ -14,19 +14,20 @@
     <ProjectGuid>{A29131FE-41A5-4CD5-B6A7-A66A173F912B}</ProjectGuid>
     <RootNamespace>utility</RootNamespace>
     <Keyword>MFCDLLProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
@@ -56,7 +57,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;UTILITY_DLL;_CRT_SECURE_NO_WARNINGS;JSON_DLL_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;_AFXDLL;_DEBUG;UTILITY_DLL;_CRT_SECURE_NO_WARNINGS;JSON_DLL_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.\;$(SolutionDir)..\include;$(SolutionDir)..\3rdParty\include;$(SolutionDir)..\3rdParty\src\;$(SolutionDir)..\3rdParty\src\json\include\</AdditionalIncludeDirectories>
     </ClCompile>
@@ -66,8 +67,11 @@
       <ModuleDefinitionFile>.\utility.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>..\..\3rdParty\lib;$(SolutionDir)\..\lib\$(Configuration)</AdditionalLibraryDirectories>
       <ImportLibrary>$(SolutionDir)..\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>sqlite3.lib;network.lib;mfcs120ud.lib;MSVCRTD.lib;Netapi32.lib</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>MSVCRTD.lib;mfcs120ud.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalDependencies>Netapi32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -90,7 +94,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;UTILITY_DLL;_CRT_SECURE_NO_WARNINGS;JSON_DLL_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;_AFXDLL;NDEBUG;UTILITY_DLL;_CRT_SECURE_NO_WARNINGS;JSON_DLL_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.\;$(SolutionDir)..\include;$(SolutionDir)..\3rdParty\include;$(SolutionDir)..\3rdParty\src\;$(SolutionDir)..\3rdParty\src\json\include\</AdditionalIncludeDirectories>
     </ClCompile>
@@ -102,8 +106,9 @@
       <ModuleDefinitionFile>.\utility.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>..\..\3rdParty\lib;$(SolutionDir)\..\lib\$(Configuration)</AdditionalLibraryDirectories>
       <ImportLibrary>$(SolutionDir)..\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>sqlite3.lib;network.lib;mfcs120u.lib;MSVCRT.lib;Netapi32.lib</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>MSVCRT.lib;mfcs120u.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalDependencies>Netapi32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -183,7 +188,14 @@
   <ItemGroup>
     <ResourceCompile Include="utility.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\3rdParty\src\sqlite\sqlite.vcxproj">
+      <Project>{eeacd7e0-62ec-439c-8678-d16354f455d5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\network\network.vcxproj">
+      <Project>{322b08fc-4620-4e34-9834-85a2e3a3a223}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

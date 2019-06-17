@@ -14,19 +14,20 @@
     <ProjectGuid>{6E182BBC-17D4-4E11-8580-44A546D6ACF0}</ProjectGuid>
     <RootNamespace>Modules</RootNamespace>
     <Keyword>MFCDLLProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
@@ -45,6 +46,8 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\..\bin\teamtalk\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\..\obj\$(Configuration)\$(ProjectName)_$(Configuration)\</IntDir>
+    <Linkage-protobuf>
+    </Linkage-protobuf>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -56,7 +59,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;MODULE_DLL;JSON_DLL;_SCL_SECURE_NO_WARNINGS;_CRTDBG_MAP_ALLOC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;_AFXDLL;_DEBUG;_AFXDLL;MODULE_DLL;JSON_DLL;_SCL_SECURE_NO_WARNINGS;_CRTDBG_MAP_ALLOC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.\;$(SolutionDir)..\include;$(SolutionDir)..\3rdParty\include;$(SolutionDir)..\3rdParty\src\;$(SolutionDir)..\3rdParty\src\cximage\cxImage\;$(SolutionDir)..\3rdParty\src\cximage\cxImage\zlib;$(SolutionDir)..\3rdParty\src\json\include\;$(SolutionDir)\..\core\</AdditionalIncludeDirectories>
     </ClCompile>
@@ -65,9 +68,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>.\Modules.def</ModuleDefinitionFile>
       <ImportLibrary>$(SolutionDir)..\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>utility.lib;network.lib;httpclient.lib;Winmm.lib;DuiLib.lib;libprotobuf-lite.lib;mfcs120ud.lib;MSVCRTD.lib;security.lib</AdditionalDependencies>
+      <AdditionalDependencies>Winmm.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\..\lib\$(Configuration);$(SolutionDir)\..\3rdParty\lib\$(Configuration)</AdditionalLibraryDirectories>
-      <IgnoreSpecificDefaultLibraries>MSVCRTD.lib;mfcs120ud.lib</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -89,7 +93,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;MODULE_DLL;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;_AFXDLL;NDEBUG;_AFXDLL;MODULE_DLL;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.\;$(SolutionDir)..\include;$(SolutionDir)..\3rdParty\include;$(SolutionDir)..\3rdParty\src\;$(SolutionDir)..\3rdParty\src\cximage\cxImage\;$(SolutionDir)..\3rdParty\src\json\include\;$(SolutionDir)\..\core\</AdditionalIncludeDirectories>
     </ClCompile>
@@ -100,9 +104,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>.\Modules.def</ModuleDefinitionFile>
       <ImportLibrary>$(SolutionDir)..\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>utility.lib;network.lib;httpclient.lib;Winmm.lib;DuiLib.lib;libprotobuf-lite.lib;mfcs120u.lib;MSVCRT.lib;security.lib</AdditionalDependencies>
+      <AdditionalDependencies>Winmm.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\..\lib\$(Configuration);$(SolutionDir)\..\3rdParty\lib\$(Configuration)</AdditionalLibraryDirectories>
-      <IgnoreSpecificDefaultLibraries>MSVCRT.lib;mfcs120u.lib</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -750,7 +755,28 @@
     <Text Include="..\..\3rdParty\src\cxImage\png\libpng-1.2.24.txt" />
     <Text Include="..\..\3rdParty\src\cxImage\zlib\algorithm.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\server\src\libsecurity\win\security.vcxproj">
+      <Project>{bc9624be-620c-3016-8634-10e3b98cf60a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\3rdParty\src\http\httpclient\httpclient.vcxproj">
+      <Project>{0c1a4d61-c72c-4bbc-8468-34cd700d860c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\3rdParty\src\protobuf-2.6.1\vsprojects\libprotobuf-lite.vcxproj">
+      <Project>{49ea010d-706f-4be2-a397-77854b72a040}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\DuiLib\DuiLib.vcxproj">
+      <Project>{e106acd7-4e53-4aee-942b-d0dd426db34e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\network\network.vcxproj">
+      <Project>{322b08fc-4620-4e34-9834-85a2e3a3a223}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\utility\utility.vcxproj">
+      <Project>{a29131fe-41a5-4cd5-b6a7-a66a173f912b}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\..\solution\packages\protobuf.2.6.1.1\build\native\protobuf.targets" Condition="Exists('..\..\solution\packages\protobuf.2.6.1.1\build\native\protobuf.targets')" />
   </ImportGroup>
 </Project>
