@@ -1,30 +1,17 @@
-cmake_minimum_required(VERSION 2.6)
-PROJECT(Base)
+cmake_minimum_required(VERSION 3.12)
+PROJECT(base LANGUAGES CXX)
 
 AUX_SOURCE_DIRECTORY(./ SRC_LIST1)
 AUX_SOURCE_DIRECTORY(./pb/protocol SRC_LIST2)
-AUX_SOURCE_DIRECTORY(./jsoncpp SRC_LIST3)
 
-if(APPLE)
-    SET(PB_LIB_DIR ./pb/lib/mac)
-elseif(UNIX)
-    SET(PB_LIB_DIR ./pb/lib/linux)
-endif()
+configure_file(version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/version.h @ONLY)
 
-SET(LIBRARY_OUTPUT_PATH ./)
-#SET(EXECUTABLE_OUTPUT_PATH  ./bin)
+find_package(jsoncpp CONFIG REQUIRED)
+get_target_property(jsoncpp_INCLUDE_DIR jsoncpp_lib INTERFACE_INCLUDE_DIRECTORIES)
 
-ADD_DEFINITIONS( -g -W -Wall -D_REENTRANT -D_FILE_OFFSET_BITS=64 -DAC_HAS_INFO
--DAC_HAS_WARNING -DAC_HAS_ERROR -DAC_HAS_CRITICAL -DTIXML_USE_STL
--DAC_HAS_DEBUG -DLINUX_DAEMON)
-
-INCLUDE_DIRECTORIES(./ ../ ./jsoncpp ./pb ./pb/protocol)
-LINK_DIRECTORIES(./ ${PB_LIB_DIR} ./slog/lib)
-
-ADD_LIBRARY(base STATIC ${SRC_LIST1} ${SRC_LIST2} ${SRC_LIST3})
-
-#ADD_XXXX必须在TARGET_LINK_LIBRARIES前面，否则会报错
-#ADD_LIBRARY(${PROJECTNAME} SHARED ${SRC_LIST})
-#ADD_EXECUTABLE(${PROJECTNAME} ${SRC_LIST})
-
-TARGET_LINK_LIBRARIES(base pthread slog crypto)
+add_library(base STATIC ${SRC_LIST1} ${SRC_LIST2})
+target_compile_features(base PRIVATE cxx_std_11)
+target_compile_definitions(base PRIVATE -D_REENTRANT -D_FILE_OFFSET_BITS=64 -DAC_HAS_INFO
+  -DAC_HAS_WARNING -DAC_HAS_ERROR -DAC_HAS_CRITICAL -DTIXML_USE_STL
+  -DAC_HAS_DEBUG -DLINUX_DAEMON)
+target_include_directories(base PRIVATE pb/protocol ${jsoncpp_INCLUDE_DIR} ${jsoncpp_INCLUDE_DIR}/jsoncpp)

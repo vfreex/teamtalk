@@ -4,9 +4,11 @@
 src/base/pb/google
 
 # CMake generated files
+build/
 cmake_install.cmake
 CMakeCache.txt
 CMakeFiles/
+src/base/version.h
 src/base/Makefile
 src/db_proxy_server/Makefile
 src/file_server/Makefile
