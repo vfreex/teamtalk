@@ -53,7 +53,7 @@ void CWorkerThread::Execute()
 		delete pTask;
 
 		m_task_cnt++;
-		//log("%d have the execute %d task\n", m_thread_idx, m_task_cnt);
+		//LOG("%d have the execute %d task\n", m_thread_idx, m_task_cnt);
 	}
 }
 
@@ -109,4 +109,3 @@ void CThreadPool::AddTask(CTask* pTask)
 	uint32_t thread_idx = random() % m_worker_size;
 	m_worker_list[thread_idx].PushTask(pTask);
 }
-

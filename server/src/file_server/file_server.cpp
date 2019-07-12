@@ -33,7 +33,7 @@
 //		CFileConn* pConn = new CFileConn();
 //		pConn->OnConnect(handle);
 //	} else {
-//		log("!!!error msg: %d ", msg);
+//		LOG("!!!error msg: %d ", msg);
 //	}
 //}
 
@@ -42,7 +42,7 @@
 //        CFileConn* pConn = new CFileConn();
 //        pConn->OnConnect(handle);
 //    } else {
-//        log("!!!error msg: %d ", msg);
+//        LOG("!!!error msg: %d ", msg);
 //    }
 //}
 
@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
     char* str_task_timeout = config_file.GetConfigName("TaskTimeout");
 
 	if (!str_client_listen_ip || !str_client_listen_port || !str_msg_server_listen_ip || !str_msg_server_listen_port) {
-		log("config item missing, exit... ");
+		LOG("config item missing, exit... ");
 		return -1;
 	}
 
@@ -126,8 +126,7 @@ int main(int argc, char* argv[])
 	netlib_eventloop();
 
 	printf("exiting.......\n");
-	log("exit");
+	LOG("exit");
 
 	return 0;
 }
-

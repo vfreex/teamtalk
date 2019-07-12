@@ -30,7 +30,7 @@ void msg_serv_callback(void* callback_data, uint8_t msg, uint32_t handle, void* 
 	}
 	else
 	{
-		log("!!!error msg: %d ", msg);
+		LOG("!!!error msg: %d ", msg);
 	}
 }
 
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 	signal(SIGPIPE, SIG_IGN);
 	srand(time(NULL));
 
-	log("MsgServer max files can open: %d ", getdtablesize());
+	LOG("MsgServer max files can open: %d ", getdtablesize());
 
 	CConfigFileReader config_file("msgserver.conf");
 
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
                                                        "FileServerPort", file_server_count);
     
     if (!str_aes_key || strlen(str_aes_key)!=32) {
-        log("aes key is invalied");
+        LOG("aes key is invalied");
         return -1;
     }
  
@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
 	// 这样当其他业务量非常繁忙时，也不会影响客服端的登录验证
 	// 建议配置4个实例，这样更新BusinessServer时，不会影响业务
 	if (db_server_count < 2) {
-		log("DBServerIP need 2 instance at lest ");
+		LOG("DBServerIP need 2 instance at lest ");
 		return 1;
 	}
 
@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
 	}
 
 	if (!listen_ip || !str_listen_port || !ip_addr1) {
-		log("config file miss, exit... ");
+		LOG("config file miss, exit... ");
 		return -1;
 	}
 

@@ -47,7 +47,7 @@ void CDepartModel::getChgedDeptId(uint32_t& nLastTime, list<uint32_t>& lsChanged
     }
     else
     {
-        log("no db connection for teamtalk_slave.");
+        LOG("no db connection for teamtalk_slave.");
     }
 }
 
@@ -55,7 +55,7 @@ void CDepartModel::getDepts(list<uint32_t>& lsDeptIds, list<IM::BaseDefine::Depa
 {
     if(lsDeptIds.empty())
     {
-        log("list is empty");
+        LOG("list is empty");
         return;
     }
     CDBManager* pDBManager = CDBManager::getInstance();
@@ -102,7 +102,7 @@ void CDepartModel::getDepts(list<uint32_t>& lsDeptIds, list<IM::BaseDefine::Depa
     }
     else
     {
-        log("no db connection for teamtalk_slave");
+        LOG("no db connection for teamtalk_slave");
     }
 }
 
@@ -137,6 +137,6 @@ void CDepartModel::getDept(uint32_t nDeptId, IM::BaseDefine::DepartInfo& cDept)
     }
     else
     {
-        log("no db connection for teamtalk_slave");
+        LOG("no db connection for teamtalk_slave");
     }
 }

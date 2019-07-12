@@ -27,7 +27,7 @@ int FileManager::initDir() {
 		if (!isExist) {
 			u64 ret = File::mkdirNoRecursion(m_disk);
 			if (ret) {
-				log("The dir[%s] set error for code[%d], \
+				LOG("The dir[%s] set error for code[%d], \
 				    its parent dir may no exists", m_disk, ret);
 				return -1;
 			}
@@ -41,7 +41,7 @@ int FileManager::initDir() {
 			string tmp = string(m_disk) + "/" + string(first);
 		    int code = File::mkdirNoRecursion(tmp.c_str());
 			if (code && (errno != EEXIST)) {
-				log("Create dir[%s] error[%d]", tmp.c_str(), errno);
+				LOG("Create dir[%s] error[%d]", tmp.c_str(), errno);
 				return -1;
 			}
 			for (int j = 0; j <= SECOND_DIR_MAX; j++) {
@@ -49,7 +49,7 @@ int FileManager::initDir() {
 				string tmp2 = tmp + "/" + string(second);
 		    	code = File::mkdirNoRecursion(tmp2.c_str());
 		    	if (code && (errno != EEXIST)) {
-					log("Create dir[%s] error[%d]", tmp2.c_str(), errno);
+					LOG("Create dir[%s] error[%d]", tmp2.c_str(), errno);
 					return -1;
 		    	}
 				memset(second, 0x0, 10);
@@ -83,7 +83,7 @@ int FileManager::uploadFile(const char *type, const void* content, u32 size,
 							char *url, char *ext) {
 	//check file size
 	if (size > MAX_FILE_SIZE_PER_FILE) {
-		log("File size[%d] should less than [%d]", size, 
+		LOG("File size[%d] should less than [%d]", size, 
 			MAX_FILE_SIZE_PER_FILE);
 		return -1;
 	}
@@ -125,7 +125,7 @@ int FileManager::uploadFile(const char *type, const void* content, u32 size,
 int FileManager::getRelatePathByUrl(const string &url, string &path) {
 	string::size_type pos = url.find("/");
 	if (string::npos == pos) {
-		log("Url [%s] format illegal.",url.c_str());
+		LOG("Url [%s] format illegal.",url.c_str());
 		return -1;
 	}
 	path = url.substr(pos);
@@ -135,7 +135,7 @@ int FileManager::getRelatePathByUrl(const string &url, string &path) {
 int FileManager::getAbsPathByUrl(const string &url, string &path) {
 	string relate;
 	if (getRelatePathByUrl(url, relate)) {
-		log("Get path from url[%s] error", url.c_str());
+		LOG("Get path from url[%s] error", url.c_str());
 		return -1;
 	}
 	path = string(m_disk) + relate;
@@ -148,7 +148,7 @@ FileManager::getOrCreateEntry(const std::string& url, bool create) {
 	m_cs.Enter();
 	EntryMap::iterator it = m_map.find(url);
 	if (it != m_map.end()) {
-		log("the map has the file while url:%s", url.c_str());
+		LOG("the map has the file while url:%s", url.c_str());
 		m_cs.Leave();
 		return it->second;
 	}
@@ -159,7 +159,7 @@ FileManager::getOrCreateEntry(const std::string& url, bool create) {
 	
 	string path;
 	if (getAbsPathByUrl(url, path)) {
-		log("Get abs path from url[%s] error", url.c_str());
+		LOG("Get abs path from url[%s] error", url.c_str());
 		m_cs.Leave();
 		return NULL;
 	}
@@ -188,7 +188,7 @@ FileManager::getOrCreateEntry(const std::string& url, bool create) {
 	tmpFile->open();
 	int ret = tmpFile->read(0, fileSize, e->m_fileContent);
 	if (ret) {
-		log("read file error while url:%s", url.c_str());
+		LOG("read file error while url:%s", url.c_str());
 		delete e;
 		e = NULL;
 		delete tmpFile;
@@ -202,7 +202,7 @@ FileManager::getOrCreateEntry(const std::string& url, bool create) {
 	std::pair < map <std::string, Entry*>::iterator, bool> result;
 	result = m_map.insert(EntryMap::value_type(url, e));
 	if (result.second == false) {
-		log("Insert url[%s] to file map error", url.c_str());
+		LOG("Insert url[%s] to file map error", url.c_str());
 		delete e;
 		e = NULL;
 	}
@@ -214,7 +214,7 @@ FileManager::getOrCreateEntry(const std::string& url, bool create) {
 int FileManager::downloadFileByUrl(char *url, void *buf, u32 *size) {
 	Entry* en = getOrCreateEntry(url, true);
 	if (!en) {
-		log("download file error, while url:%s", url);
+		LOG("download file error, while url:%s", url);
 		return -1;
 	}
 	memcpy(buf, en->m_fileContent, en->m_fileSize);
@@ -227,7 +227,7 @@ void FileManager::updateMapCache() {
 	size_t currSize = m_map.size();
 	if (currSize > MAX_FILE_IN_MAP) {
 		EntryMap::iterator it = m_map.begin();
-		int times = abs(MAX_FILE_IN_MAP - currSize);
+		int times = currSize - MAX_FILE_IN_MAP;
 		while (it != m_map.end() && times) {
 			delete it->second;
 			m_map.erase(it++);
@@ -274,7 +274,7 @@ void FileManager::releaseFileCache(const std::string& url) {
 	m_cs.Enter();
 	const Entry* entry = getEntry(url);
 	if (!entry) {
-		log("map has not the url::%s", url.c_str());
+		LOG("map has not the url::%s", url.c_str());
         m_cs.Leave();
 		return;
 	}
@@ -285,4 +285,3 @@ void FileManager::releaseFileCache(const std::string& url) {
 }
 
 }
-

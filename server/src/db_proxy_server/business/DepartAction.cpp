@@ -40,7 +40,7 @@ namespace DB_PROXY{
                 pDeptInfo->set_parent_dept_id(it->parent_dept_id());
                 pDeptInfo->set_dept_status(it->dept_status());
             }
-            log("userId=%u, last_update=%u, cnt=%u", nUserId, nLastUpdate, lsDeparts.size());
+            LOG("userId=%u, last_update=%u, cnt=%u", nUserId, nLastUpdate, lsDeparts.size());
             msgResp.set_attach_data(msg.attach_data());
             pPduRes->SetPBMsg(&msgResp);
             pPduRes->SetSeqNum(pPdu->GetSeqNum());
@@ -51,7 +51,7 @@ namespace DB_PROXY{
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
 }

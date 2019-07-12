@@ -67,7 +67,7 @@ BOOL CAPNSGateWayMsg::SerializeToArray()
     int8_t device_token[APNS_DEVICE_TOKEN_BINARY_LENGTH] = {0};
     for (uint32_t i = 0, j = 0; i < APNS_DEVICE_TOKEN_BINARY_LENGTH; i++, j+=2)
     {
-        int8_t binary = 0;
+        unsigned int binary = 0;
         char tmp[3] = {szDeviceToken[j], szDeviceToken[j + 1], '\0'};
         sscanf(tmp, "%x", &binary);
         device_token[i] = binary;

@@ -49,7 +49,7 @@ void httpconn_callback(void* callback_data, uint8_t msg, uint32_t handle, uint32
 		pConn->OnClose();
 		break;
 	default:
-		log("!!!httpconn_callback error msg: %d ", msg);
+		LOG("!!!httpconn_callback error msg: %d ", msg);
 		break;
 	}
 }
@@ -87,12 +87,12 @@ CHttpConn::CHttpConn()
 		m_conn_handle = ++g_conn_handle_generator;
 	}
 
-	//log("CHttpConn, handle=%u ", m_conn_handle);
+	//LOG("CHttpConn, handle=%u ", m_conn_handle);
 }
 
 CHttpConn::~CHttpConn()
 {
-	//log("~CHttpConn, handle=%u ", m_conn_handle);
+	//LOG("~CHttpConn, handle=%u ", m_conn_handle);
 }
 
 int CHttpConn::Send(void* data, int len)
@@ -113,7 +113,7 @@ int CHttpConn::Send(void* data, int len)
 	{
 		m_out_buf.Write((char*)data + ret, len - ret);
 		m_busy = true;
-		//log("not send all, remain=%d ", m_out_buf.GetWriteOffset());
+		//LOG("not send all, remain=%d ", m_out_buf.GetWriteOffset());
 	}
     else
     {
@@ -169,7 +169,7 @@ void CHttpConn::OnRead()
 	uint32_t buf_len = m_in_buf.GetWriteOffset();
 	in_buf[buf_len] = '\0';
 
-	//log("OnRead, buf_len=%u, conn_handle=%u\n", buf_len, m_conn_handle); // for debug
+	//LOG("OnRead, buf_len=%u, conn_handle=%u\n", buf_len, m_conn_handle); // for debug
 
 	m_HttpParser.ParseHttpContent(in_buf, buf_len);
 
@@ -180,7 +180,7 @@ void CHttpConn::OnRead()
 			CHttpQuery* pQueryInstance = CHttpQuery::GetInstance();
 			pQueryInstance->DispatchQuery(url, content, this);
 		} else {
-			log("url unknown, url=%s ", url.c_str());
+			LOG("url unknown, url=%s ", url.c_str());
 			Close();
 		}
 	}
@@ -202,7 +202,7 @@ void CHttpConn::OnWrite()
 	if (ret < out_buf_size)
 	{
 		m_busy = true;
-		log("not send all, remain=%d ", m_out_buf.GetWriteOffset());
+		LOG("not send all, remain=%d ", m_out_buf.GetWriteOffset());
 	}
 	else
 	{
@@ -219,7 +219,7 @@ void CHttpConn::OnClose()
 void CHttpConn::OnTimer(uint64_t curr_tick)
 {
 	if (curr_tick > m_last_recv_tick + HTTP_CONN_TIMEOUT) {
-		log("HttpConn timeout, handle=%d ", m_conn_handle);
+		LOG("HttpConn timeout, handle=%d ", m_conn_handle);
 		Close();
 	}
 }
@@ -228,4 +228,3 @@ void CHttpConn::OnWriteCompelete()
 {
     Close();
 }
-

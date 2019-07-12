@@ -39,7 +39,7 @@ void CConfigFileReader::_LoadFile(const char* filename)
 	FILE* fp = fopen(filename, "r");
 	if (!fp)
 	{
-		//log("can not open %s\n", filename);
+		//LOG("can not open %s\n", filename);
 		return;
 	}
 

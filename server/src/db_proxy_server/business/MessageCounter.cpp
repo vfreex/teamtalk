@@ -54,7 +54,7 @@ namespace DB_PROXY {
             }
             
             
-            log("userId=%d, unreadCnt=%u, totalCount=%u", nUserId, msgResp.unreadinfo_list_size(), nTotalCnt);
+            LOG("userId=%d, unreadCnt=%u, totalCount=%u", nUserId, msgResp.unreadinfo_list_size(), nTotalCnt);
             msgResp.set_attach_data(msg.attach_data());
             pPduResp->SetPBMsg(&msgResp);
             pPduResp->SetSeqNum(pPdu->GetSeqNum());
@@ -64,7 +64,7 @@ namespace DB_PROXY {
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
 
@@ -77,11 +77,11 @@ namespace DB_PROXY {
             uint32_t nFromId = msg.session_id();
             IM::BaseDefine::SessionType nSessionType = msg.session_type();
             CUserModel::getInstance()->clearUserCounter(nUserId, nFromId, nSessionType);
-            log("userId=%u, peerId=%u, type=%u", nFromId, nUserId, nSessionType);
+            LOG("userId=%u, peerId=%u, type=%u", nFromId, nUserId, nSessionType);
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
         
@@ -133,15 +133,15 @@ namespace DB_PROXY {
                 string strNewValue = int2string(nUserId);
                 pCacheConn->set("device_"+strToken, strNewValue);
             
-                log("setDeviceToken. userId=%u, deviceToken=%s", nUserId, strToken.c_str());
+                LOG("setDeviceToken. userId=%u, deviceToken=%s", nUserId, strToken.c_str());
                 pCacheManager->RelCacheConn(pCacheConn);
             }
             else
             {
-                log("no cache connection for token");
+                LOG("no cache connection for token");
             }
             
-            log("setDeviceToken. userId=%u, deviceToken=%s", nUserId, strToken.c_str());
+            LOG("setDeviceToken. userId=%u, deviceToken=%s", nUserId, strToken.c_str());
             msgResp.set_attach_data(msg.attach_data());
             msgResp.set_user_id(nUserId);
             pPduResp->SetPBMsg(&msgResp);
@@ -152,7 +152,7 @@ namespace DB_PROXY {
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
 
@@ -239,32 +239,32 @@ namespace DB_PROXY {
                                 }
                                 else
                                 {
-                                    log("invalid clientType.clientType=%u", nClientType);
+                                    LOG("invalid clientType.clientType=%u", nClientType);
                                 }
                             }
                             else
                             {
-                                log("invalid value. value=%s", strValue.c_str());
+                                LOG("invalid value. value=%s", strValue.c_str());
                             }
                             
                         }
                         else
                         {
-                            log("invalid key.key=%s", strKey.c_str());
+                            LOG("invalid key.key=%s", strKey.c_str());
                         }
                     }
                 }
                 else
                 {
-                    log("mget failed!");
+                    LOG("mget failed!");
                 }
             }
             else
             {
-                log("no cache connection for token");
+                LOG("no cache connection for token");
             }
             
-            log("req devices token.reqCnt=%u, resCnt=%u", nCnt, msgResp.user_token_info_size());
+            LOG("req devices token.reqCnt=%u, resCnt=%u", nCnt, msgResp.user_token_info_size());
             
             msgResp.set_attach_data(msg.attach_data());
             pPduResp->SetPBMsg(&msgResp);
@@ -275,9 +275,7 @@ namespace DB_PROXY {
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
 };
-
-

@@ -35,7 +35,7 @@ void proxy_serv_callback(void* callback_data, uint8_t msg, uint32_t handle, void
 	}
 	else
 	{
-		log("!!!error msg: %d", msg);
+		LOG("!!!error msg: %d", msg);
 	}
 }
 
@@ -52,13 +52,13 @@ int main(int argc, char* argv[])
 
 	CacheManager* pCacheManager = CacheManager::getInstance();
 	if (!pCacheManager) {
-		log("CacheManager init failed");
+		LOG("CacheManager init failed");
 		return -1;
 	}
 
 	CDBManager* pDBManager = CDBManager::getInstance();
 	if (!pDBManager) {
-		log("DBManager init failed");
+		LOG("DBManager init failed");
 		return -1;
 	}
 puts("db init success");
@@ -106,13 +106,13 @@ puts("db init success");
     char* str_aes_key = config_file.GetConfigName("aesKey");
 
 	if (!listen_ip || !str_listen_port || !str_thread_num || !str_file_site || !str_aes_key) {
-		log("missing ListenIP/ListenPort/ThreadNum/MsfsSite/aesKey, exit...");
+		LOG("missing ListenIP/ListenPort/ThreadNum/MsfsSite/aesKey, exit...");
 		return -1;
 	}
     
     if(strlen(str_aes_key) != 32)
     {
-        log("aes key is invalied");
+        LOG("aes key is invalied");
         return -2;
     }
     string strAesKey(str_aes_key, 32);
@@ -161,5 +161,3 @@ puts("db init success");
 
 	return 0;
 }
-
-

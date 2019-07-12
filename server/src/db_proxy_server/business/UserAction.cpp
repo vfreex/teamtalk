@@ -61,7 +61,7 @@ msgResp.set_user_id(from_user_id);
                 pUser->set_user_domain(it->user_domain());
                 pUser->set_status(it->status());
             }
-            log("userId=%u, userCnt=%u", from_user_id, userCount);
+            LOG("userId=%u, userCnt=%u", from_user_id, userCount);
             msgResp.set_attach_data(msg.attach_data());
             pPduRes->SetPBMsg(&msgResp);
             pPduRes->SetSeqNum(pPdu->GetSeqNum());
@@ -71,7 +71,7 @@ msgResp.set_user_id(from_user_id);
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
     
@@ -112,7 +112,7 @@ msgResp.set_user_id(from_user_id);
                 pUser->set_user_domain(it->user_domain());
                 pUser->set_status(it->status());
             }
-            log("userId=%u,nLastUpdate=%u, last_time=%u, userCnt=%u", nReqId,nLastUpdate, nLastTime, msgResp.user_list_size());
+            LOG("userId=%u,nLastUpdate=%u, last_time=%u, userCnt=%u", nReqId,nLastUpdate, nLastTime, msgResp.user_list_size());
             msgResp.set_attach_data(msg.attach_data());
             pPduRes->SetPBMsg(&msgResp);
             pPduRes->SetSeqNum(pPdu->GetSeqNum());
@@ -122,7 +122,7 @@ msgResp.set_user_id(from_user_id);
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
     
@@ -140,9 +140,9 @@ msgResp.set_user_id(from_user_id);
                         resp.set_result_code(result ? 0 : 1);
                         if (result) {
                                 resp.set_sign_info(sign_info);
-                                log("changeUserSignInfo sucess, user_id=%u, sign_info=%s", user_id, sign_info.c_str());
+                                LOG("changeUserSignInfo sucess, user_id=%u, sign_info=%s", user_id, sign_info.c_str());
                             } else {
-                                    log("changeUserSignInfo false, user_id=%u, sign_info=%s", user_id, sign_info.c_str());
+                                    LOG("changeUserSignInfo false, user_id=%u, sign_info=%s", user_id, sign_info.c_str());
                                 }
 
             
@@ -155,7 +155,7 @@ msgResp.set_user_id(from_user_id);
                         CProxyConn::AddResponsePdu(conn_uuid, pdu_resp);
                     
                     } else {
-                            log("changeUserSignInfo: IMChangeSignInfoReq ParseFromArray failed!!!");
+                            LOG("changeUserSignInfo: IMChangeSignInfoReq ParseFromArray failed!!!");
                         }
            }
     void doPushShield(CImPdu* pPdu, uint32_t conn_uuid) {
@@ -172,9 +172,9 @@ msgResp.set_user_id(from_user_id);
             resp.set_result_code(result ? 0 : 1);
             if (result) {
                 resp.set_shield_status(shield_status);
-                log("doPushShield sucess, user_id=%u, shield_status=%u", user_id, shield_status);
+                LOG("doPushShield sucess, user_id=%u, shield_status=%u", user_id, shield_status);
             } else {
-                log("doPushShield false, user_id=%u, shield_status=%u", user_id, shield_status);
+                LOG("doPushShield false, user_id=%u, shield_status=%u", user_id, shield_status);
             }
             
             
@@ -187,7 +187,7 @@ msgResp.set_user_id(from_user_id);
             CProxyConn::AddResponsePdu(conn_uuid, pdu_resp);
             
         } else {
-            log("doPushShield: IMPushShieldReq ParseFromArray failed!!!");
+            LOG("doPushShield: IMPushShieldReq ParseFromArray failed!!!");
         }
     }
     
@@ -204,9 +204,9 @@ msgResp.set_user_id(from_user_id);
             resp.set_result_code(result ? 0 : 1);
             if (result) {
                 resp.set_shield_status(shield_status);
-                log("doQueryPushShield sucess, user_id=%u, shield_status=%u", user_id, shield_status);
+                LOG("doQueryPushShield sucess, user_id=%u, shield_status=%u", user_id, shield_status);
             } else {
-                log("doQueryPushShield false, user_id=%u", user_id);
+                LOG("doQueryPushShield false, user_id=%u", user_id);
             }
             
             
@@ -218,8 +218,7 @@ msgResp.set_user_id(from_user_id);
             pdu_resp->SetCommandId(IM::BaseDefine::CID_LOGIN_RES_QUERY_PUSH_SHIELD);
             CProxyConn::AddResponsePdu(conn_uuid, pdu_resp);
         } else {
-            log("doQueryPushShield: IMQueryPushShieldReq ParseFromArray failed!!!");
+            LOG("doQueryPushShield: IMQueryPushShieldReq ParseFromArray failed!!!");
         }
     }
 };
-

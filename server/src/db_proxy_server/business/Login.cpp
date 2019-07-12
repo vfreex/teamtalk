@@ -25,7 +25,7 @@
 
 CInterLoginStrategy g_loginStrategy;
 
-hash_map<string, list<uint32_t> > g_hmLimits;
+unordered_map<string, list<uint32_t> > g_hmLimits;
 CLock g_cLimitLock;
 namespace DB_PROXY {
     
@@ -89,7 +89,7 @@ void doLogin(CImPdu* pPdu, uint32_t conn_uuid)
             }
         } while(false);
         
-        log("%s request login.", strDomain.c_str());
+        LOG("%s request login.", strDomain.c_str());
         
         
         
@@ -128,7 +128,7 @@ void doLogin(CImPdu* pPdu, uint32_t conn_uuid)
             list<uint32_t>& lsErrorTime = g_hmLimits[strDomain];
             lsErrorTime.push_front(tmCurrent);
             
-            log("get result false");
+            LOG("get result false");
             msgResp.set_result_code(1);
             msgResp.set_result_string("用户名/密码错误");
         }

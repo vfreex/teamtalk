@@ -40,7 +40,7 @@ namespace DB_PROXY {
                 pInfo->set_file_size(it->file_size());
             }
             
-            log("userId=%u, count=%u", nUserId, msgResp.offline_file_list_size());
+            LOG("userId=%u, count=%u", nUserId, msgResp.offline_file_list_size());
             
             msgResp.set_attach_data(msg.attach_data());
             pPduRes->SetPBMsg(&msgResp);
@@ -51,7 +51,7 @@ namespace DB_PROXY {
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
     
@@ -67,7 +67,7 @@ namespace DB_PROXY {
             uint32_t nFileSize = msg.file_size();
             CFileModel* pModel = CFileModel::getInstance();
             pModel->addOfflineFile(nUserId, nToId, strTaskId, strFileName, nFileSize);
-            log("fromId=%u, toId=%u, taskId=%s, fileName=%s, fileSize=%u", nUserId, nToId, strTaskId.c_str(), strFileName.c_str(), nFileSize);
+            LOG("fromId=%u, toId=%u, taskId=%s, fileName=%s, fileSize=%u", nUserId, nToId, strTaskId.c_str(), strFileName.c_str(), nFileSize);
         }
     }
     
@@ -81,7 +81,7 @@ namespace DB_PROXY {
             string strTaskId = msg.task_id();
             CFileModel* pModel = CFileModel::getInstance();
             pModel->delOfflineFile(nUserId, nToId, strTaskId);
-            log("fromId=%u, toId=%u, taskId=%s", nUserId, nToId, strTaskId.c_str());
+            LOG("fromId=%u, toId=%u, taskId=%s", nUserId, nToId, strTaskId.c_str());
         }
     }
 };

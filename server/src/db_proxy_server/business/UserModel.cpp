@@ -67,20 +67,20 @@ void CUserModel::getChangedId(uint32_t& nLastTime, list<uint32_t> &lsIds)
         }
         else
         {
-            log(" no result set for sql:%s", strSql.c_str());
+            LOG(" no result set for sql:%s", strSql.c_str());
         }
         pDBManager->RelDBConn(pDBConn);
     }
     else
     {
-        log("no db connection for teamtalk_slave");
+        LOG("no db connection for teamtalk_slave");
     }
 }
 
 void CUserModel::getUsers(list<uint32_t> lsIds, list<IM::BaseDefine::UserInfo> &lsUsers)
 {
     if (lsIds.empty()) {
-        log("list is empty");
+        LOG("list is empty");
         return;
     }
     CDBManager* pDBManager = CDBManager::getInstance();
@@ -127,13 +127,13 @@ void CUserModel::getUsers(list<uint32_t> lsIds, list<IM::BaseDefine::UserInfo> &
         }
         else
         {
-            log(" no result set for sql:%s", strSql.c_str());
+            LOG(" no result set for sql:%s", strSql.c_str());
         }
         pDBManager->RelDBConn(pDBConn);
     }
     else
     {
-        log("no db connection for teamtalk_slave");
+        LOG("no db connection for teamtalk_slave");
     }
 }
 
@@ -167,13 +167,13 @@ bool CUserModel::getUser(uint32_t nUserId, DBUserInfo_t &cUser)
         }
         else
         {
-            log("no result set for sql:%s", strSql.c_str());
+            LOG("no result set for sql:%s", strSql.c_str());
         }
         pDBManager->RelDBConn(pDBConn);
     }
     else
     {
-        log("no db connection for teamtalk_slave");
+        LOG("no db connection for teamtalk_slave");
     }
     return bRet;
 }
@@ -191,13 +191,13 @@ bool CUserModel::updateUser(DBUserInfo_t &cUser)
         bRet = pDBConn->ExecuteUpdate(strSql.c_str());
         if(!bRet)
         {
-            log("updateUser: update failed:%s", strSql.c_str());
+            LOG("updateUser: update failed:%s", strSql.c_str());
         }
         pDBManager->RelDBConn(pDBConn);
     }
     else
     {
-        log("no db connection for teamtalk_master");
+        LOG("no db connection for teamtalk_master");
     }
     return bRet;
 }
@@ -235,7 +235,7 @@ bool CUserModel::insertUser(DBUserInfo_t &cUser)
             
             if (!bRet)
             {
-                log("insert user failed: %s", strSql.c_str());
+                LOG("insert user failed: %s", strSql.c_str());
             }
         }
         delete stmt;
@@ -243,7 +243,7 @@ bool CUserModel::insertUser(DBUserInfo_t &cUser)
     }
     else
     {
-        log("no db connection for teamtalk_master");
+        LOG("no db connection for teamtalk_master");
     }
     return bRet;
 }
@@ -262,7 +262,7 @@ void CUserModel::clearUserCounter(uint32_t nUserId, uint32_t nPeerId, IM::BaseDe
                 int nRet = pCacheConn->hdel("unread_" + int2string(nUserId), int2string(nPeerId));
                 if(!nRet)
                 {
-                    log("hdel failed %d->%d", nPeerId, nUserId);
+                    LOG("hdel failed %d->%d", nPeerId, nUserId);
                 }
             }
             // Clear Group msg Counter
@@ -276,12 +276,12 @@ void CUserModel::clearUserCounter(uint32_t nUserId, uint32_t nPeerId, IM::BaseDe
                     string strUserKey = int2string(nUserId) + "_" + int2string(nPeerId) + GROUP_USER_MSG_COUNTER_REDIS_KEY_SUFFIX;
                     string strReply = pCacheConn->hmset(strUserKey, mapGroupCount);
                     if(strReply.empty()) {
-                        log("hmset %s failed !", strUserKey.c_str());
+                        LOG("hmset %s failed !", strUserKey.c_str());
                     }
                 }
                 else
                 {
-                    log("hgetall %s failed!", strGroupKey.c_str());
+                    LOG("hgetall %s failed!", strGroupKey.c_str());
                 }
                 
             }
@@ -289,11 +289,11 @@ void CUserModel::clearUserCounter(uint32_t nUserId, uint32_t nPeerId, IM::BaseDe
         }
         else
         {
-            log("no cache connection for unread");
+            LOG("no cache connection for unread");
         }
     }
     else{
-        log("invalid sessionType. userId=%u, fromId=%u, sessionType=%u", nUserId, nPeerId, nSessionType);
+        LOG("invalid sessionType. userId=%u, fromId=%u, sessionType=%u", nUserId, nPeerId, nSessionType);
     }
 }
 
@@ -321,7 +321,7 @@ void CUserModel::setCallReport(uint32_t nUserId, uint32_t nPeerId, IM::BaseDefin
                 
                 if (!bRet)
                 {
-                    log("insert report failed: %s", strSql.c_str());
+                    LOG("insert report failed: %s", strSql.c_str());
                 }
             }
             delete stmt;
@@ -329,13 +329,13 @@ void CUserModel::setCallReport(uint32_t nUserId, uint32_t nPeerId, IM::BaseDefin
         }
         else
         {
-            log("no db connection for teamtalk_master");
+            LOG("no db connection for teamtalk_master");
         }
         
     }
     else
     {
-        log("invalid clienttype. userId=%u, peerId=%u, clientType=%u", nUserId, nPeerId, nClientType);
+        LOG("invalid clienttype. userId=%u, peerId=%u, clientType=%u", nUserId, nPeerId, nClientType);
     }
 }
 
@@ -343,7 +343,7 @@ void CUserModel::setCallReport(uint32_t nUserId, uint32_t nPeerId, IM::BaseDefin
 bool CUserModel::updateUserSignInfo(uint32_t user_id, const string& sign_info) {
    
     if (sign_info.length() > 128) {
-        log("updateUserSignInfo: sign_info.length()>128.\n");
+        LOG("updateUserSignInfo: sign_info.length()>128.\n");
         return false;
     }
     bool rv = false;
@@ -354,14 +354,14 @@ bool CUserModel::updateUserSignInfo(uint32_t user_id, const string& sign_info) {
         string str_sql = "update IMUser set `sign_info`='" + sign_info + "', `updated`=" + int2string(now) + " where id="+int2string(user_id);
         rv = db_conn->ExecuteUpdate(str_sql.c_str());
         if(!rv) {
-            log("updateUserSignInfo: update failed:%s", str_sql.c_str());
+            LOG("updateUserSignInfo: update failed:%s", str_sql.c_str());
         }else{
                 CSyncCenter::getInstance()->updateTotalUpdate(now);
            
         }
         db_manager->RelDBConn(db_conn);
         } else {
-            log("updateUserSignInfo: no db connection for teamtalk_master");
+            LOG("updateUserSignInfo: no db connection for teamtalk_master");
             }
     return rv;
     }
@@ -380,11 +380,11 @@ bool CUserModel::getUserSingInfo(uint32_t user_id, string* sign_info) {
                 }
             delete result_set;
             } else {
-                        log("no result set for sql:%s", str_sql.c_str());
+                        LOG("no result set for sql:%s", str_sql.c_str());
                    }
                 db_manager->RelDBConn(db_conn);
         } else {
-                    log("no db connection for teamtalk_slave");
+                    LOG("no db connection for teamtalk_slave");
                }
     return rv;
    }
@@ -399,11 +399,11 @@ bool CUserModel::updatePushShield(uint32_t user_id, uint32_t shield_status) {
         string str_sql = "update IMUser set `push_shield_status`="+ int2string(shield_status) + ", `updated`=" + int2string(now) + " where id="+int2string(user_id);
         rv = db_conn->ExecuteUpdate(str_sql.c_str());
         if(!rv) {
-            log("updatePushShield: update failed:%s", str_sql.c_str());
+            LOG("updatePushShield: update failed:%s", str_sql.c_str());
         }
         db_manager->RelDBConn(db_conn);
     } else {
-        log("updatePushShield: no db connection for teamtalk_master");
+        LOG("updatePushShield: no db connection for teamtalk_master");
     }
     
     return rv;
@@ -424,11 +424,11 @@ bool CUserModel::getPushShield(uint32_t user_id, uint32_t* shield_status) {
             }
             delete result_set;
         } else {
-            log("getPushShield: no result set for sql:%s", str_sql.c_str());
+            LOG("getPushShield: no result set for sql:%s", str_sql.c_str());
         }
         db_manager->RelDBConn(db_conn);
     } else {
-        log("getPushShield: no db connection for teamtalk_slave");
+        LOG("getPushShield: no db connection for teamtalk_slave");
     }
     
     return rv;

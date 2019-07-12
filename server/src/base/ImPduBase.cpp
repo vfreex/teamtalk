@@ -144,7 +144,7 @@ bool CImPdu::IsPduAvailable(uchar_t* buf, uint32_t len, uint32_t& pdu_len)
 	pdu_len = CByteStream::ReadUint32(buf);
 	if (pdu_len > len)
 	{
-		//log("pdu_len=%d, len=%d\n", pdu_len, len);
+		//LOG("pdu_len=%d, len=%d\n", pdu_len, len);
 		return false;
 	}
     
@@ -166,11 +166,10 @@ void CImPdu::SetPBMsg(const google::protobuf::MessageLite* msg)
     //ALLOC_FAIL_ASSERT(szData)
     if (!msg->SerializeToArray(szData, msg_size))
     {
-        log("pb msg miss required fields.");
+        LOG("pb msg miss required fields.");
     }
     
     m_buf.Write(szData, msg_size);
     delete []szData;
     WriteHeader();
 }
-

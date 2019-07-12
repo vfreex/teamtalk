@@ -66,10 +66,10 @@ namespace DB_PROXY {
                     pMsg->set_create_time(it->create_time());
                     pMsg->set_msg_type(it->msg_type());
                     pMsg->set_msg_data(it->msg_data());
-//                    log("userId=%u, peerId=%u, msgId=%u", nUserId, nPeerId, it->msg_id());
+//                    LOG("userId=%u, peerId=%u, msgId=%u", nUserId, nPeerId, it->msg_id());
                 }
 
-                log("userId=%u, peerId=%u, msgId=%u, msgCnt=%u, count=%u", nUserId, nPeerId, nMsgId, nMsgCnt, msgResp.msg_list_size());
+                LOG("userId=%u, peerId=%u, msgId=%u, msgCnt=%u, count=%u", nUserId, nPeerId, nMsgId, nMsgCnt, msgResp.msg_list_size());
                 msgResp.set_attach_data(msg.attach_data());
                 pPduResp->SetPBMsg(&msgResp);
                 pPduResp->SetSeqNum(pPdu->GetSeqNum());
@@ -79,13 +79,13 @@ namespace DB_PROXY {
             }
             else
             {
-                log("invalid sessionType. userId=%u, peerId=%u, msgId=%u, msgCnt=%u, sessionType=%u",
+                LOG("invalid sessionType. userId=%u, peerId=%u, msgId=%u, msgCnt=%u, sessionType=%u",
                     nUserId, nPeerId, nMsgId, nMsgCnt, nSessionType);
             }
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
 
@@ -132,7 +132,7 @@ namespace DB_PROXY {
                         }
                         else
                         {
-                            log("invalid groupId. fromId=%u, groupId=%u", nFromId, nToId);
+                            LOG("invalid groupId. fromId=%u, groupId=%u", nFromId, nToId);
                             delete pPduResp;
                             return;
                         }
@@ -156,7 +156,7 @@ namespace DB_PROXY {
                         }
                         else
                         {
-                            log("invalid groupId. fromId=%u, groupId=%u", nFromId, nToId);
+                            LOG("invalid groupId. fromId=%u, groupId=%u", nFromId, nToId);
                             delete pPduResp;
                             return;
                         }
@@ -183,16 +183,16 @@ namespace DB_PROXY {
                                 }
                                 else
                                 {
-                                    log("msgId is invalid. fromId=%u, toId=%u, nRelateId=%u, nSessionId=%u, nMsgType=%u", nFromId, nToId, nRelateId, nSessionId, nMsgType);
+                                    LOG("msgId is invalid. fromId=%u, toId=%u, nRelateId=%u, nSessionId=%u, nMsgType=%u", nFromId, nToId, nRelateId, nSessionId, nMsgType);
                                 }
                             }
                             else{
-                                log("sessionId or relateId is invalid. fromId=%u, toId=%u, nRelateId=%u, nSessionId=%u, nMsgType=%u", nFromId, nToId, nRelateId, nSessionId, nMsgType);
+                                LOG("sessionId or relateId is invalid. fromId=%u, toId=%u, nRelateId=%u, nSessionId=%u, nMsgType=%u", nFromId, nToId, nRelateId, nSessionId, nMsgType);
                             }
                         }
                         else
                         {
-                            log("send msg to self. fromId=%u, toId=%u, msgType=%u", nFromId, nToId, nMsgType);
+                            LOG("send msg to self. fromId=%u, toId=%u, msgType=%u", nFromId, nToId, nMsgType);
                         }
                         
                     } else if(nMsgType == IM::BaseDefine::MSG_TYPE_SINGLE_AUDIO) {
@@ -218,20 +218,20 @@ namespace DB_PROXY {
                                     CSessionModel::getInstance()->updateSession(nPeerSessionId, nNow);
                                 }
                                 else {
-                                    log("msgId is invalid. fromId=%u, toId=%u, nRelateId=%u, nSessionId=%u, nMsgType=%u", nFromId, nToId, nRelateId, nSessionId, nMsgType);
+                                    LOG("msgId is invalid. fromId=%u, toId=%u, nRelateId=%u, nSessionId=%u, nMsgType=%u", nFromId, nToId, nRelateId, nSessionId, nMsgType);
                                 }
                             }
                             else {
-                                log("sessionId or relateId is invalid. fromId=%u, toId=%u, nRelateId=%u, nSessionId=%u, nMsgType=%u", nFromId, nToId, nRelateId, nSessionId, nMsgType);
+                                LOG("sessionId or relateId is invalid. fromId=%u, toId=%u, nRelateId=%u, nSessionId=%u, nMsgType=%u", nFromId, nToId, nRelateId, nSessionId, nMsgType);
                             }
                         }
                         else
                         {
-                            log("send msg to self. fromId=%u, toId=%u, msgType=%u", nFromId, nToId, nMsgType);
+                            LOG("send msg to self. fromId=%u, toId=%u, msgType=%u", nFromId, nToId, nMsgType);
                         }
                     }
 
-                    log("fromId=%u, toId=%u, type=%u, msgId=%u, sessionId=%u", nFromId, nToId, nMsgType, nMsgId, nSessionId);
+                    LOG("fromId=%u, toId=%u, type=%u, msgId=%u, sessionId=%u", nFromId, nToId, nMsgType, nMsgId, nSessionId);
 
                     msg.set_msg_id(nMsgId);
                     pPduResp->SetPBMsg(&msg);
@@ -242,17 +242,17 @@ namespace DB_PROXY {
                 }
                 else
                 {
-                    log("msgLen error. fromId=%u, toId=%u, msgType=%u", nFromId, nToId, nMsgType);
+                    LOG("msgLen error. fromId=%u, toId=%u, msgType=%u", nFromId, nToId, nMsgType);
                 }
             }
             else
             {
-                log("invalid msgType.fromId=%u, toId=%u, msgType=%u", nFromId, nToId, nMsgType);
+                LOG("invalid msgType.fromId=%u, toId=%u, msgType=%u", nFromId, nToId, nMsgType);
             }
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
 
@@ -296,7 +296,7 @@ namespace DB_PROXY {
                     pMsg->set_msg_type(it->msg_type());
                     pMsg->set_msg_data(it->msg_data());
                 }
-                log("userId=%u, peerId=%u, sessionType=%u, reqMsgCnt=%u, resMsgCnt=%u", nUserId, nPeerId, nType, msg.msg_id_list_size(), msgResp.msg_list_size());
+                LOG("userId=%u, peerId=%u, sessionType=%u, reqMsgCnt=%u, resMsgCnt=%u", nUserId, nPeerId, nType, msg.msg_id_list_size(), msgResp.msg_list_size());
                 msgResp.set_attach_data(msg.attach_data());
                 pPduResp->SetPBMsg(&msgResp);
                 pPduResp->SetSeqNum(pPdu->GetSeqNum());
@@ -306,12 +306,12 @@ namespace DB_PROXY {
             }
             else
             {
-                log("invalid sessionType. fromId=%u, toId=%u, sessionType=%u, msgCnt=%u", nUserId, nPeerId, nType, nCnt);
+                LOG("invalid sessionType. fromId=%u, toId=%u, sessionType=%u, msgCnt=%u", nUserId, nPeerId, nType, nCnt);
             }
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
 
@@ -344,7 +344,7 @@ namespace DB_PROXY {
                     CGroupMessageModel::getInstance()->getLastMsg(nPeerId, nMsgId, strMsg, nMsgType, nFromId);
                 }
                 msgResp.set_latest_msg_id(nMsgId);
-                log("userId=%u, peerId=%u, sessionType=%u, msgId=%u", nUserId, nPeerId, nType,nMsgId);
+                LOG("userId=%u, peerId=%u, sessionType=%u, msgId=%u", nUserId, nPeerId, nType,nMsgId);
                 msgResp.set_attach_data(msg.attach_data());
                 pPduResp->SetPBMsg(&msgResp);
                 pPduResp->SetSeqNum(pPdu->GetSeqNum());
@@ -355,12 +355,12 @@ namespace DB_PROXY {
             }
             else
             {
-                log("invalid sessionType. userId=%u, peerId=%u, sessionType=%u", nUserId, nPeerId, nType);
+                LOG("invalid sessionType. userId=%u, peerId=%u, sessionType=%u", nUserId, nPeerId, nType);
             }
         }
         else
         {
-            log("parse pb failed");
+            LOG("parse pb failed");
         }
     }
 };

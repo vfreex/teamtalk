@@ -58,7 +58,7 @@ void httpconn_callback(void* callback_data, uint8_t msg, uint32_t handle,
         pConn->OnClose();
         break;
     default:
-        log("!!!httpconn_callback error msg: %d", msg);
+        LOG("!!!httpconn_callback error msg: %d", msg);
         break;
     }
 }
@@ -165,7 +165,7 @@ void CHttpTask::OnUpload()
                         {
                             memcpy(szType, pPosType + 1, nTypeLen);
                             szType[nTypeLen] = 0;
-                            log("upload file, file name:%s", szFileName);
+                            LOG("upload file, file name:%s", szFileName);
                             char szExtend[16];
                             const char* pPosExtend = memfind(szFileName, nFileNameLen, "_", 1, false);
                             if(pPosExtend != NULL)
@@ -255,7 +255,7 @@ void CHttpTask::OnUpload()
                                             {
                                                 char url[128];
                                                 snprintf(url, sizeof(url), "{\"error_code\":8,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                                                log("%s",url);
+                                                LOG("%s",url);
                                                 uint32_t content_length = strlen(url);
                                                 pContent = new char[HTTP_RESPONSE_HTML_MAX];
                                                 snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -266,7 +266,7 @@ void CHttpTask::OnUpload()
                                         {
                                             char url[128];
                                             snprintf(url, sizeof(url), "{\"error_code\":7,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                                            log("%s",url);
+                                            LOG("%s",url);
                                             uint32_t content_length = strlen(url);
                                             pContent = new char[HTTP_RESPONSE_HTML_MAX];
                                             snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -278,7 +278,7 @@ void CHttpTask::OnUpload()
                                     {
                                         char url[128];
                                         snprintf(url, sizeof(url), "{\"error_code\":6,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                                        log("%s",url);
+                                        LOG("%s",url);
                                         uint32_t content_length = strlen(url);
                                         pContent = new char[HTTP_RESPONSE_HTML_MAX];
                                         snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -289,7 +289,7 @@ void CHttpTask::OnUpload()
                                 {
                                     char url[128];
                                     snprintf(url, sizeof(url), "{\"error_code\":5,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                                    log("%s",url);
+                                    LOG("%s",url);
                                     uint32_t content_length = strlen(url);
                                     pContent = new char[HTTP_RESPONSE_HTML_MAX];
                                     snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -300,7 +300,7 @@ void CHttpTask::OnUpload()
                             {
                                 char url[128];
                                 snprintf(url, sizeof(url), "{\"error_code\":4,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                                log("%s",url);
+                                LOG("%s",url);
                                 uint32_t content_length = strlen(url);
                                 pContent = new char[HTTP_RESPONSE_HTML_MAX];
                                 snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -310,7 +310,7 @@ void CHttpTask::OnUpload()
                         else{
                             char url[128];
                             snprintf(url, sizeof(url), "{\"error_code\":9,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                            log("%s",url);
+                            LOG("%s",url);
                             uint32_t content_length = strlen(url);
                             pContent = new char[HTTP_RESPONSE_HTML_MAX];
                             snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -320,7 +320,7 @@ void CHttpTask::OnUpload()
                    else{
                        char url[128];
                        snprintf(url, sizeof(url), "{\"error_code\":10,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                       log("%s",url);
+                       LOG("%s",url);
                        uint32_t content_length = strlen(url);
                        pContent = new char[HTTP_RESPONSE_HTML_MAX];
                        snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -330,7 +330,7 @@ void CHttpTask::OnUpload()
                 {
                     char url[128];
                     snprintf(url, sizeof(url), "{\"error_code\":11,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                    log("%s",url);
+                    LOG("%s",url);
                     uint32_t content_length = strlen(url);
                     pContent = new char[HTTP_RESPONSE_HTML_MAX];
                     snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -341,7 +341,7 @@ void CHttpTask::OnUpload()
             {
                 char url[128];
                 snprintf(url, sizeof(url), "{\"error_code\":3,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-                log("%s",url);
+                LOG("%s",url);
                 uint32_t content_length = strlen(url);
                 pContent = new char[HTTP_RESPONSE_HTML_MAX];
                 snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -352,7 +352,7 @@ void CHttpTask::OnUpload()
         {
             char url[128];
             snprintf(url, sizeof(url), "{\"error_code\":2,\"error_msg\": \"格式错误\",\"path\":\"\",\"url\":\"\"}");
-            log("%s",url);
+            LOG("%s",url);
             uint32_t content_length = strlen(url);
             pContent = new char[HTTP_RESPONSE_HTML_MAX];
             snprintf(pContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, content_length,url);
@@ -394,7 +394,7 @@ void  CHttpTask::OnDownload()
                 char* pContent = new char[nTotalLen];
                 snprintf(pContent, nTotalLen, HTTP_RESPONSE_404);
                 CHttpConn::AddResponsePdu(m_ConnHandle, pContent, nTotalLen);
-                log("File size is invalied\n");
+                LOG("File size is invalied\n");
                 
             }
         }
@@ -420,12 +420,12 @@ CHttpConn::CHttpConn()
         m_conn_handle = ++g_conn_handle_generator;
     }
 
-    //log("CHttpConn, handle=%u", m_conn_handle);
+    //LOG("CHttpConn, handle=%u", m_conn_handle);
 }
 
 CHttpConn::~CHttpConn()
 {
-    //log("~CHttpConn, handle=%u", m_conn_handle);
+    //LOG("~CHttpConn, handle=%u", m_conn_handle);
 }
 
 int CHttpConn::Send(void* data, int len)
@@ -446,7 +446,7 @@ int CHttpConn::Send(void* data, int len)
     {
         m_out_buf.Write((char*) data + ret, len - ret);
         m_busy = true;
-        //log("not send all, remain=%d", m_out_buf.GetWriteOffset());
+        //LOG("not send all, remain=%d", m_out_buf.GetWriteOffset());
     }
     else
     {
@@ -504,7 +504,7 @@ void CHttpConn::OnRead()
     uint32_t buf_len = m_in_buf.GetWriteOffset();
     in_buf[buf_len] = '\0';
 
-    //log("OnRead, buf_len=%u, conn_handle=%u", buf_len, m_conn_handle); // for debug
+    //LOG("OnRead, buf_len=%u, conn_handle=%u", buf_len, m_conn_handle); // for debug
 
 
     m_HttpParser.ParseHttpContent(in_buf, buf_len);
@@ -512,7 +512,7 @@ void CHttpConn::OnRead()
     if (m_HttpParser.IsReadAll())
     {
         string strUrl = m_HttpParser.GetUrl();
-        log("IP:%s access:%s", m_peer_ip.c_str(), strUrl.c_str());
+        LOG("IP:%s access:%s", m_peer_ip.c_str(), strUrl.c_str());
         if (strUrl.find("..") != strUrl.npos) {
             Close();
             return;
@@ -521,10 +521,10 @@ void CHttpConn::OnRead()
         if (m_HttpParser.GetContentLen() > HTTP_UPLOAD_MAX)
         {
             // file is too big
-            log("content  is too big");
+            LOG("content  is too big");
             char url[128];
             snprintf(url, sizeof(url), "{\"error_code\":1,\"error_msg\": \"上传文件过大\",\"url\":\"\"}");
-            log("%s",url);
+            LOG("%s",url);
             uint32_t content_length = strlen(url);
             char pContent[1024];
             snprintf(pContent, sizeof(pContent), HTTP_RESPONSE_HTML, content_length,url);
@@ -542,7 +542,7 @@ void CHttpConn::OnRead()
             }
             catch(...)
             {
-                log("not enough memory");
+                LOG("not enough memory");
                 char szResponse[HTTP_RESPONSE_500_LEN + 1];
                 snprintf(szResponse, HTTP_RESPONSE_500_LEN, "%s", HTTP_RESPONSE_500);
                 Send(szResponse, HTTP_RESPONSE_500_LEN);
@@ -586,7 +586,7 @@ void CHttpConn::OnWrite()
     if (ret < out_buf_size)
     {
         m_busy = true;
-//        log("not send all, remain=%d", m_out_buf.GetWriteOffset());
+//        LOG("not send all, remain=%d", m_out_buf.GetWriteOffset());
     } else
     {
         m_busy = false;
@@ -603,7 +603,7 @@ void CHttpConn::OnTimer(uint64_t curr_tick)
 {
     if (curr_tick > m_last_recv_tick + HTTP_CONN_TIMEOUT)
     {
-        log("HttpConn timeout, handle=%d", m_conn_handle);
+        LOG("HttpConn timeout, handle=%d", m_conn_handle);
         Close();
     }
 }

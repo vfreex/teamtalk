@@ -54,13 +54,13 @@ void CFileModel::getOfflineFile(uint32_t userId, list<IM::BaseDefine::OfflineFil
         }
         else
         {
-            log("no result for:%s", strSql.c_str());
+            LOG("no result for:%s", strSql.c_str());
         }
         pDBManager->RelDBConn(pDBConn);
     }
     else
     {
-        log("no db connection for teamtalk_slave");
+        LOG("no db connection for teamtalk_slave");
     }
 }
 
@@ -93,7 +93,7 @@ void CFileModel::addOfflineFile(uint32_t fromId, uint32_t toId, string& taskId, 
             
             if (!bRet)
             {
-                log("insert message failed: %s", strSql.c_str());
+                LOG("insert message failed: %s", strSql.c_str());
             }
         }
         delete pStmt;
@@ -101,7 +101,7 @@ void CFileModel::addOfflineFile(uint32_t fromId, uint32_t toId, string& taskId, 
     }
     else
     {
-        log("no db connection for teamtalk_master");
+        LOG("no db connection for teamtalk_master");
     }
 }
 
@@ -114,16 +114,16 @@ void CFileModel::delOfflineFile(uint32_t fromId, uint32_t toId, string& taskId)
         string strSql = "delete from IMTransmitFile where  fromId=" + int2string(fromId) + " and toId="+int2string(toId) + " and taskId='" + taskId + "'";
         if(pDBConn->ExecuteUpdate(strSql.c_str()))
         {
-            log("delete offline file success.%d->%d:%s", fromId, toId, taskId.c_str());
+            LOG("delete offline file success.%d->%d:%s", fromId, toId, taskId.c_str());
         }
         else
         {
-            log("delete offline file failed.%d->%d:%s", fromId, toId, taskId.c_str());
+            LOG("delete offline file failed.%d->%d:%s", fromId, toId, taskId.c_str());
         }
         pDBManager->RelDBConn(pDBConn);
     }
     else
     {
-        log("no db connection for teamtalk_master");
+        LOG("no db connection for teamtalk_master");
     }
 }

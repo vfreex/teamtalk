@@ -42,7 +42,7 @@ void ClientConn::OnConfirm()
 
 void ClientConn::OnClose()
 {
-    log("onclose from handle=%d\n", m_handle);
+    LOG("onclose from handle=%d\n", m_handle);
     Close();
 }
 
@@ -60,7 +60,7 @@ void ClientConn::OnTimer(uint64_t curr_tick)
     }
     
     if (curr_tick > m_last_recv_tick + CLIENT_TIMEOUT) {
-        log("conn to msg_server timeout\n");
+        LOG("conn to msg_server timeout\n");
         Close();
     }
 }
@@ -240,7 +240,7 @@ void ClientConn::HandlePdu(CImPdu* pPdu)
             _HandleMsgData(pPdu);
             break;
         default:
-		log("wrong msg_type=%d\n", pPdu->GetCommandId());
+		LOG("wrong msg_type=%d\n", pPdu->GetCommandId());
 		break;
 	}
 }

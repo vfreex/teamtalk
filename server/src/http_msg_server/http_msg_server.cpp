@@ -28,7 +28,7 @@ void http_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pPar
 	}
 	else
 	{
-		log("!!!error msg: %d ", msg);
+		LOG("!!!error msg: %d ", msg);
 	}
 }
 
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 	signal(SIGPIPE, SIG_IGN);
 	srand(time(NULL));
     
-	log("MsgServer max files can open: %d ", getdtablesize());
+	LOG("MsgServer max files can open: %d ", getdtablesize());
     
 	CConfigFileReader config_file("httpmsgserver.conf");
     
@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
 	}
 
 	if (!listen_ip || !str_listen_port) {
-		log("config file miss, exit... ");
+		LOG("config file miss, exit... ");
 		return -1;
 	}
     

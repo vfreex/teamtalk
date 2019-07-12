@@ -373,12 +373,12 @@ struct TransferTask {
     }
     
     void lock(int n) {
-        //    	log("++++++++++++++++++++++ lock %d %s\n", n, task_id.c_str());
+        //    	LOG("++++++++++++++++++++++ lock %d %s\n", n, task_id.c_str());
         pthread_rwlock_wrlock(&task_lock);
     }
     
     void unlock(int n) {
-        //    	log("++++++++++++++++++++++unlock %d %s\n", n, task_id.c_str());
+        //    	LOG("++++++++++++++++++++++unlock %d %s\n", n, task_id.c_str());
         pthread_rwlock_unlock(&task_lock);
     }
     

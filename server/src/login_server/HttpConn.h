@@ -17,7 +17,7 @@
 #define READ_BUF_SIZE	2048
 #define HTTP_RESPONSE_HTML          "HTTP/1.1 200 OK\r\n"\
                                     "Connection:close\r\n"\
-                                    "Content-Length:%d\r\n"\
+                                    "Content-Length:%zu\r\n"\
                                     "Content-Type:text/html;charset=utf-8\r\n\r\n%s"
 #define HTTP_RESPONSE_HTML_MAX      1024
 
@@ -66,7 +66,7 @@ protected:
     CHttpParserWrapper m_cHttpParser;
 };
 
-typedef hash_map<uint32_t, CHttpConn*> HttpConnMap_t;
+typedef unordered_map<uint32_t, CHttpConn*> HttpConnMap_t;
 
 CHttpConn* FindHttpConnByHandle(uint32_t handle);
 void init_http_conn();

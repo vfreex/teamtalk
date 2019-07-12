@@ -65,7 +65,7 @@ void CLoginConn::Close()
 				msg_serv_info_t* pMsgServInfo = it->second;
 
 				g_total_online_user_cnt -= pMsgServInfo->cur_conn_cnt;
-				log("onclose from MsgServer: %s:%u ", pMsgServInfo->hostname.c_str(), pMsgServInfo->port);
+				LOG("onclose from MsgServer: %s:%u ", pMsgServInfo->hostname.c_str(), pMsgServInfo->port);
 				delete pMsgServInfo;
 				g_msg_serv_info.erase(it);
 			}
@@ -112,7 +112,7 @@ void CLoginConn::OnTimer(uint64_t curr_tick)
 		}
 
 		if (curr_tick > m_last_recv_tick + SERVER_TIMEOUT) {
-			log("connection to MsgServer timeout ");
+			LOG("connection to MsgServer timeout ");
 			Close();
 		}
 	}
@@ -134,7 +134,7 @@ void CLoginConn::HandlePdu(CImPdu* pPdu)
             break;
 
         default:
-            log("wrong msg, cmd id=%d ", pPdu->GetCommandId());
+            LOG("wrong msg, cmd id=%d ", pPdu->GetCommandId());
             break;
 	}
 }
@@ -155,7 +155,7 @@ void CLoginConn::_HandleMsgServInfo(CImPdu* pPdu)
 
 	g_total_online_user_cnt += pMsgServInfo->cur_conn_cnt;
 
-	log("MsgServInfo, ip_addr1=%s, ip_addr2=%s, port=%d, max_conn_cnt=%d, cur_conn_cnt=%d, "\
+	LOG("MsgServInfo, ip_addr1=%s, ip_addr2=%s, port=%d, max_conn_cnt=%d, cur_conn_cnt=%d, "\
 		"hostname: %s. ",
 		pMsgServInfo->ip_addr1.c_str(), pMsgServInfo->ip_addr2.c_str(), pMsgServInfo->port,pMsgServInfo->max_conn_cnt,
 		pMsgServInfo->cur_conn_cnt, pMsgServInfo->hostname.c_str());
@@ -178,7 +178,7 @@ void CLoginConn::_HandleUserCntUpdate(CImPdu* pPdu)
 			g_total_online_user_cnt--;
 		}
 
-		log("%s:%d, cur_cnt=%u, total_cnt=%u ", pMsgServInfo->hostname.c_str(),
+		LOG("%s:%d, cur_cnt=%u, total_cnt=%u ", pMsgServInfo->hostname.c_str(),
             pMsgServInfo->port, pMsgServInfo->cur_conn_cnt, g_total_online_user_cnt);
 	}
 }
@@ -188,7 +188,7 @@ void CLoginConn::_HandleMsgServRequest(CImPdu* pPdu)
     IM::Login::IMMsgServReq msg;
     msg.ParseFromArray(pPdu->GetBodyData(), pPdu->GetBodyLength());
 
-	log("HandleMsgServReq. ");
+	LOG("HandleMsgServReq. ");
 
 	// no MessageServer available
 	if (g_msg_serv_info.size() == 0) {
@@ -220,7 +220,7 @@ void CLoginConn::_HandleMsgServRequest(CImPdu* pPdu)
 	}
 
 	if (it_min_conn == g_msg_serv_info.end()) {
-		log("All TCP MsgServer are full ");
+		LOG("All TCP MsgServer are full ");
         IM::Login::IMMsgServRsp msg;
         msg.set_result_code(::IM::BaseDefine::REFUSE_REASON_MSG_SERVER_FULL);
         CImPdu pdu;

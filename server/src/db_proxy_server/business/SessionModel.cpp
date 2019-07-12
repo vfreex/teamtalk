@@ -52,14 +52,14 @@ void CSessionModel::getRecentSession(uint32_t nUserId, uint32_t lastTime, list<I
                 }
                 else
                 {
-                    log("invalid sessionType. userId=%u, peerId=%u, sessionType=%u", nUserId, nPeerId, nSessionType);
+                    LOG("invalid sessionType. userId=%u, peerId=%u, sessionType=%u", nUserId, nPeerId, nSessionType);
                 }
             }
             delete pResultSet;
         }
         else
         {
-            log("no result set for sql: %s", strSql.c_str());
+            LOG("no result set for sql: %s", strSql.c_str());
         }
         pDBManager->RelDBConn(pDBConn);
         if(!lsContact.empty())
@@ -69,7 +69,7 @@ void CSessionModel::getRecentSession(uint32_t nUserId, uint32_t lastTime, list<I
     }
     else
     {
-        log("no db connection for teamtalk_slave");
+        LOG("no db connection for teamtalk_slave");
     }
 }
 
@@ -101,7 +101,7 @@ uint32_t CSessionModel::getSessionId(uint32_t nUserId, uint32_t nPeerId, uint32_
     }
     else
     {
-        log("no db connection for teamtalk_slave");
+        LOG("no db connection for teamtalk_slave");
     }
     return nSessionId;
 }
@@ -119,7 +119,7 @@ bool CSessionModel::updateSession(uint32_t nSessionId, uint32_t nUpdateTime)
     }
     else
     {
-        log("no db connection for teamtalk_master");
+        LOG("no db connection for teamtalk_master");
     }
     return bRet;
 }
@@ -138,7 +138,7 @@ bool CSessionModel::removeSession(uint32_t nSessionId)
     }
     else
     {
-        log("no db connection for teamtalk_master");
+        LOG("no db connection for teamtalk_master");
     }
     return bRet;
 }
@@ -161,7 +161,7 @@ uint32_t CSessionModel::addSession(uint32_t nUserId, uint32_t nPeerId, uint32_t 
             {
                 nSessionId = INVALID_VALUE;
             }
-            log("has relation ship set status");
+            LOG("has relation ship set status");
         }
         else
         {
@@ -185,7 +185,7 @@ uint32_t CSessionModel::addSession(uint32_t nUserId, uint32_t nPeerId, uint32_t 
                 }
                 else
                 {
-                    log("insert message failed. %s", strSql.c_str());
+                    LOG("insert message failed. %s", strSql.c_str());
                 }
             }
             delete stmt;
@@ -194,7 +194,7 @@ uint32_t CSessionModel::addSession(uint32_t nUserId, uint32_t nPeerId, uint32_t 
     }
     else
     {
-        log("no db connection for teamtalk_master");
+        LOG("no db connection for teamtalk_master");
     }
     return nSessionId;
 }

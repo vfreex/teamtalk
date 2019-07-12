@@ -36,7 +36,7 @@ void imconn_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pP
 	if (!pConn)
 		return;
 
-	//log("msg=%d, handle=%d ", msg, handle);
+	//LOG("msg=%d, handle=%d ", msg, handle);
 
 	switch (msg)
 	{
@@ -53,7 +53,7 @@ void imconn_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pP
 		pConn->OnClose();
 		break;
 	default:
-		log("!!!imconn_callback error msg: %d ", msg);
+		LOG("!!!imconn_callback error msg: %d ", msg);
 		break;
 	}
 
@@ -63,7 +63,7 @@ void imconn_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pP
 //////////////////////////
 CImConn::CImConn()
 {
-	//log("CImConn::CImConn ");
+	//LOG("CImConn::CImConn ");
 
 	m_busy = false;
 	m_handle = NETLIB_INVALID_HANDLE;
@@ -74,7 +74,7 @@ CImConn::CImConn()
 
 CImConn::~CImConn()
 {
-	//log("CImConn::~CImConn, handle=%d ", m_handle);
+	//LOG("CImConn::~CImConn, handle=%d ", m_handle);
 }
 
 int CImConn::Send(void* data, int len)
@@ -110,7 +110,7 @@ int CImConn::Send(void* data, int len)
 	{
 		m_out_buf.Write((char*)data + offset, remain);
 		m_busy = true;
-		log("send busy, remain=%d ", m_out_buf.GetWriteOffset());
+		LOG("send busy, remain=%d ", m_out_buf.GetWriteOffset());
 	}
     else
     {
@@ -153,7 +153,7 @@ void CImConn::OnRead()
 //			++g_recv_pkt_cnt;
 		}
 	} catch (CPduException& ex) {
-		log("!!!catch exception, sid=%u, cid=%u, err_code=%u, err_msg=%s, close the connection ",
+		LOG("!!!catch exception, sid=%u, cid=%u, err_code=%u, err_msg=%s, close the connection ",
 				ex.GetServiceId(), ex.GetCommandId(), ex.GetErrorCode(), ex.GetErrorMsg());
         if (pPdu) {
             delete pPdu;
@@ -187,9 +187,5 @@ void CImConn::OnWrite()
 		m_busy = false;
 	}
 
-	log("onWrite, remain=%d ", m_out_buf.GetWriteOffset());
+	LOG("onWrite, remain=%d ", m_out_buf.GetWriteOffset());
 }
-
-
-
-

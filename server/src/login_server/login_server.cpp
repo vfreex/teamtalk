@@ -24,14 +24,14 @@ void client_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pP
 	}
 	else
 	{
-		log("!!!error msg: %d ", msg);
+		LOG("!!!error msg: %d ", msg);
 	}
 }
 
 // this callback will be replaced by imconn_callback() in OnConnect()
 void msg_serv_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pParam)
 {
-    log("msg_server come in");
+    LOG("msg_server come in");
 
 	if (msg == NETLIB_MSG_CONNECT)
 	{
@@ -40,7 +40,7 @@ void msg_serv_callback(void* callback_data, uint8_t msg, uint32_t handle, void* 
 	}
 	else
 	{
-		log("!!!error msg: %d ", msg);
+		LOG("!!!error msg: %d ", msg);
 	}
 }
 
@@ -54,7 +54,7 @@ void http_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pPar
     }
     else
     {
-        log("!!!error msg: %d ", msg);
+        LOG("!!!error msg: %d ", msg);
     }
 }
 
@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
 
 	if (!msg_server_listen_ip || !str_msg_server_port || !http_listen_ip
         || !str_http_port || !str_msfs_url || !str_discovery) {
-		log("config item missing, exit... ");
+		LOG("config item missing, exit... ");
 		return -1;
 	}
 
