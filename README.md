@@ -1,10 +1,8 @@
-# TeamTalk
-	TeamTalk is a solution for enterprise IM
-	
-	具体文档见doc目录下,安装之前请仔细阅读相关文档。
-	
-# 交流
-		建议大家在开发过程中遇到问题,提交issues到https://github.com/mogujie/TeamTalk/issues  
-		
-		我们的官方维护人员会抽时间解答,谢谢大家的理解.
-		* qq群:341273218
+# TeamTalk-NG
+
+TeamTalk-NG is an enterprise instant messaging system
+forked from [Mogu TeamTalk][] v1.0,
+aiming to provide modern, secure, and cloud-native experience.
+
+This project is under active development by the TeamTalk Remix team.
+No releases have been officially announced yet.
